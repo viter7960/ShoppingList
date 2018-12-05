@@ -1,0 +1,38 @@
+{
+  "shoppinglists": [
+    {
+      "title": "Clothes",
+      "items": [
+        {
+          "text": "School bag",
+          "checked": true
+        }
+      ],
+      "id": 2
+    },
+    {
+      "title": "Clothes",
+      "items": [
+        {
+          "text": "Trousers",
+          "checked": true
+        }
+      ],
+      "id": 3
+    },
+    {
+      "title": "Groceries",
+      "items": [
+        {
+          "text": "Fresh onions",
+          "checked": true
+        },
+        {
+          "text": "banans",
+          "checked": false
+        }
+      ],
+      "id": 4
+    }
+  ]
+}
