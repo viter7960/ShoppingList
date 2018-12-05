@@ -9,16 +9,17 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-export default {
-  props: ['item', 'id'],
-  methods: mapActions(['updateList']),
-  watch: {
-    'item.checked': function () {
-      this.updateList(this.id)
+  import { mapActions } from 'vuex'
+
+  export default {
+    props: ['item', 'id'],
+    methods: mapActions(['updateList']),
+    watch: {
+      'item.checked': function () {
+        this.updateList(this.id)
+      }
     }
   }
-}
 </script>
 
 <style scoped>

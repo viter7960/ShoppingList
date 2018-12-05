@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="container">
     <ul class="nav nav-tabs" role="tablist">
-      <li v-bind:class= "index===0 ? 'active' : ''" v-for="(list, index) in shoppinglists" role="presentation">
-        <a v-bind:href="'#' + list.id" v-bind:aria-controls="list.id" role="tab" data-toggle="tab">{{ list.title }}</a>        
+      <li :class="index===0 ? 'active' : ''" v-for="(list, index) in shoppinglists" role="presentation">
+        <shopping-list-title-component :id="list.id" :title="list.title"></shopping-list-title-component>
       </li>
       <li>
         <a href="#" @click="addShoppingList">
@@ -11,8 +11,8 @@
       </li>
     </ul>
     <div class="tab-content">
-      <div v-bind:class= "index===0 ? 'active' : ''" v-for="(list, index) in shoppinglists" class="tab-pane" role="tabpanel" v-bind:id="list.id">
-        <shopping-list-component :id="list.id" :items="list.items" @changeTitle="changeTitle({title: list.title, id: id})"></shopping-list-component>
+      <div :class="index===0 ? 'active' : ''" v-for="(list, index) in shoppinglists" class="tab-pane" role="tabpanel" :id="list.id">
+        <shopping-list-component :id="list.id" :title="list.title" :items="list.items"></shopping-list-component>
       </div>
     </div>
   </div>
@@ -20,29 +20,30 @@
 
 <script>
   import ShoppingListComponent from './components/ShoppingListComponent'
+  import ShoppingListTitleComponent from './components/ShoppingListTitleComponent'
   import store from './vuex/store'
-  import _ from 'underscore'
   import { mapGetters, mapActions } from 'vuex'
+  import _ from 'underscore'
 
   export default {
     components: {
-      ShoppingListComponent
+      ShoppingListComponent,
+      ShoppingListTitleComponent
     },
     computed: mapGetters({
       shoppinglists: 'getLists'
     }),
-    store,
-    methods: _.extend({},
-    mapActions(['populateShoppingLists', 'createShoppingList']),
-      {
-        addShoppingList () {
-          let shoppingList = {
-            title: 'New Shopping List',
-            items: []
-          }
-          this.createShoppingList(shoppingList)
+    methods: _.extend({}, mapActions(['populateShoppingLists', 'createShoppingList']), {
+      addShoppingList () {
+        let list = {
+          title: 'New Shopping List',
+          items: []
         }
-      }),
+
+        this.createShoppingList(list)
+      }
+    }),
+    store,
     mounted () {
       this.populateShoppingLists()
     }

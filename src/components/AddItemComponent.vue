@@ -1,8 +1,8 @@
 <template>
   <div class="input-group">
-    <input type="text" v-model="newItem" @keyup.enter="addItem"  placeholder="add shopping list item" class="form-control">
+    <input type="text" @keyup.enter="addItem" v-model="newItem" placeholder="add shopping list item" class="form-control">
     <span class="input-group-btn">
-      <button  @click="addItem" class="btn btn-default" type="button">Add!</button>
+      <button @click="addItem" class="btn btn-default" type="button">Add!</button>
     </span>
   </div>
 </template>
@@ -17,8 +17,10 @@
     },
     methods: {
       addItem () {
-        var t = this.newItem.trim()
-        if (t) {
+        var text
+
+        text = this.newItem.trim()
+        if (text) {
           this.$emit('add', this.newItem)
           this.newItem = ''
           this.$store.dispatch('updateList', this.id)

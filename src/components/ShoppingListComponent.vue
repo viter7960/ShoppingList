@@ -1,11 +1,11 @@
 <template>
   <div>
-    <shopping-list-title-component :id="id"></shopping-list-title-component>
+    <h2>{{ title }}</h2>
     <add-item-component :id="id" @add="addItem"></add-item-component>
-    <items-component v-bind:items="items" :id="id"></items-component>
+    <items-component :items="items" :id="id"></items-component>
     <div class="footer">
       <hr />
-      <change-title-component :id="id" v-on:changeTitle="onChangeTitle"></change-title-component>
+      <change-title-component :title="title" :id="id"></change-title-component>
     </div>
   </div>
 </template>
@@ -14,14 +14,12 @@
   import AddItemComponent from './AddItemComponent'
   import ItemsComponent from './ItemsComponent'
   import ChangeTitleComponent from './ChangeTitleComponent'
-  import ShoppingListTitleComponent from './ShoppingListTitleComponent'
 
   export default {
     components: {
       AddItemComponent,
       ItemsComponent,
-      ChangeTitleComponent,
-      ShoppingListTitleComponent
+      ChangeTitleComponent
     },
     props: ['id', 'title', 'items'],
     methods: {
@@ -30,10 +28,6 @@
           text: text,
           checked: false
         })
-      },
-
-      onChangeTitle (text) {
-        this.$emit('changeTitle', this.id, text)
       }
     }
   }

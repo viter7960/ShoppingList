@@ -7,7 +7,6 @@ const ShoppingListsResource = Vue.resource('http://localhost:3000/' + 'shoppingl
 
 export default {
   fetchShoppingLists: () => {
-    console.log('getting...')
     return ShoppingListsResource.get()
   },
   addNewShoppingList: (data) => {
