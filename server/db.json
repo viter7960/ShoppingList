@@ -11,16 +11,6 @@
       "id": 2
     },
     {
-      "title": "Clothes",
-      "items": [
-        {
-          "text": "Trousers",
-          "checked": true
-        }
-      ],
-      "id": 3
-    },
-    {
       "title": "Groceries",
       "items": [
         {
@@ -33,6 +23,20 @@
         }
       ],
       "id": 4
+    },
+    {
+      "title": "Furnitures",
+      "items": [
+        {
+          "text": "Paper",
+          "checked": false
+        },
+        {
+          "text": "Pencil",
+          "checked": false
+        }
+      ],
+      "id": 5
     }
   ]
 }
